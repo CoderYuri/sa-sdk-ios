@@ -102,13 +102,7 @@
         }
     }
 
-    if (
-#ifdef SENSORS_ANALYTICS_DISABLE_UIWEBVIEW
-        [NSStringFromClass(object.class) isEqualToString:@"UIWebView"]
-#else
-        [object isKindOfClass:UIWebView.class]
-#endif
-        ) { // 暂不支持 UIWebView，添加弹框
+    if ([NSStringFromClass(object.class) isEqualToString:@"UIWebView"]) { // 暂不支持 UIWebView，添加弹框
         [self addUIWebViewAlertInfo];
     } else if ([object isKindOfClass:WKWebView.class]) {
         // 针对 WKWebView 数据检查
